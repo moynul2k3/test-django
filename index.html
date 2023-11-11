@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        #progress-container {
+            width: 300px;
+            height: 20px;
+            border: 1px solid #ccc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <script>
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            let width = 0;
+
+            function increaseWidth() {
+                if (width < 100) {
+                    width++;
+                    progressBar.style.width = width + '%';
+                    requestAnimationFrame(increaseWidth);
+                }
+            }
+
+            increaseWidth();
+        }
+
+        // Call the function to start the progress bar animation
+        updateProgressBar();
+    </script>
+</body>
+</html>
